@@ -1,60 +1,276 @@
 <!doctype html>
-<html class="no-js" lang="">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/output.css">
-  <meta name="description" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atomic Scout</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/output.css">
 </head>
-
 <body>
+    <div class="flex flex-col h-dvh">
+        <div class="flex items-end justify-center border-b-2 border-b-white p-4 md:mx-[25%]">
+            <ul class="steps">
+                <li id="step_info" class="step step-primary" onclick="switchToInfo()">Basic Info</li>
+                <li id="step_auto" class="step" onclick="switchToAutonomous()">Autonomous</li>
+                <li id="step_teleop" class="step" onclick="switchToTeleop()">TeleOp</li>
+                <li id="step_endgame" class="step" onclick="switchToEndgame()">Endgame</li>
+            </ul>
+        </div>
 
-  <form id="scoring_form">
-    <fieldset id="info">
-      <legend>Basic Information</legend>
+        <main class="flex-1 flex items-center justify-center lg:items-start">
+            <form>
+                <fieldset id="info" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4">
+                    <legend class="fieldset-legend">Basic Info</legend>
 
+                    <label for="teamNum" class="floating-label mb-1">
+                        <span>Team Number</span>
+                        <input
+                                id="teamNum"
+                                type="number"
+                                placeholder="Team Number"
+                                class="input input-md w-[40%]"
+                        />
+                    </label>
 
-      <label for="team_number" class="floating-label m-2">Team Number</label>
-      <input id="team_number" name="team_number" type="number" min="1" placeholder="Team Number" class="input" />
-      <input id="match_number" name="match_number" type="number" min="1" placeholder="Match Number" />
-      <br />
-      <label for="start_side">Starting Side:</label>
-      <select id="start_side" name="start_side" >
-        <option value="near">Near</option>
-        <option value="far">Far</option>
-      </select>
-      <br />
-      <br />
-      <button type="button" class="to_auto btn btn-primary">Continue</button>
-    </fieldset>
-    <fieldset id="autonomous" class="hidden fieldset">
-      <legend class="fieldset-legend">Autonomous</legend>
+                    <label for="matchNum" class="floating-label mb-1">
+                        <span>Match Number</span>
+                        <input
+                                id="matchNum"
+                                type="number"
+                                placeholder="Match Number"
+                                class="input input-md w-[40%]"
+                        />
+                    </label>
 
-      <button class="to_teleop btn btn-secondary" type="button">Switch to TeleOp</button>
-      <button class="to_endgame btn btn-secondary" type="button">Switch to Endgame</button>
-      <br /><br />
-    </fieldset>
-    <fieldset id="teleop" class="hidden fieldset">
-      <legend class="fieldset-legend">TeleOp</legend>
+                    <label class="select w-full mb-4">
+                        <span class="label">Starting Side</span>
+                        <select>
+                            <option disabled selected>Match Start Side</option>
+                            <option>Near</option>
+                            <option>Far</option>
+                        </select>
+                    </label>
 
-      <button class="to_auto btn btn-secondary" type="button">Switch to Autonomous</button>
-      <button class="to_endgame btn btn-secondary" type="button">Switch to Endgame</button>
-      <br /><br />
-    </fieldset>
-    <fieldset id="endgame" class="hidden fieldset">
-      <legend class="fieldset-legend">Endgame</legend>
+                    <button class="btn btn-primary w-full" onclick="switchToAutonomous()" type="button">Next</button>
+                </fieldset>
 
-      <button class="to_teleop btn btn-secondary" type="button">Switch to TeleOp</button>
-      <button class="to_auto btn btn-secondary" type="button">Switch to Autonomous</button>
-      <br /><br />
-    </fieldset>
-  </form>
+                <fieldset id="autonomous" class="hidden">
+                    <legend class="fieldset-legend">Autonomous</legend>
 
-  <script src="js/app.js"></script>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Samples</legend>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label for="autoSamplesScored" class="floating-label mb-1">
+                                <span>Samples Scored</span>
+                                <input
+                                        id="autoSamplesScored"
+                                        type="number"
+                                        placeholder="Samples Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoSamplesDropped" class="floating-label mb-1">
+                                <span>Samples Dropped</span>
+                                <input
+                                        id="autoSamplesDropped"
+                                        type="number"
+                                        placeholder="Samples Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                        </div>
+                    </fieldset>
 
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Specimens</legend>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label for="autoSpecimensScored" class="floating-label mb-1">
+                                <span>Specimens Scored</span>
+                                <input
+                                        id="autoSpecimensScored"
+                                        type="number"
+                                        placeholder="Specimens Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoSamplesDropped" class="floating-label mb-1">
+                                <span>Specimens Dropped</span>
+                                <input
+                                        id="autoSpecimensDropped"
+                                        type="number"
+                                        placeholder="Specimens Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Parking</legend>
+                        <label class="select w-full mb-1">
+                            <span class="label">Parking</span>
+                            <select>
+                                <option disabled selected>Auto Park Location</option>
+                                <option>None</option>
+                                <option>Level 1 Ascent</option>
+                                <option>Observation Zone</option>
+                            </select>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Notes</legend>
+                        <label for="autoNotes" class="floating-label mb-1">
+                            <span>Auto Notes</span>
+                            <input
+                                    id="autoNotes"
+                                    type="text"
+                                    placeholder="Auto Notes"
+                                    class="input input-md w-full"
+                            />
+                        </label>
+                    </fieldset>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="w-full btn btn-primary" onclick="switchToInfo()" type="button">Back</button>
+                        <button class="w-full btn btn-primary" onclick="switchToTeleop()" type="button">Next</button>
+                    </div>
+                </fieldset>
+
+                <fieldset id="teleop" class="hidden">
+                    <legend class="fieldset-legend">TeleOp</legend>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Samples</legend>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label for="teleopSamplesScored" class="floating-label mb-1">
+                                <span>Samples Scored</span>
+                                <input
+                                        id="teleopSamplesScored"
+                                        type="number"
+                                        placeholder="Samples Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopSamplesDropped" class="floating-label mb-1">
+                                <span>Samples Dropped</span>
+                                <input
+                                        id="teleopSamplesDropped"
+                                        type="number"
+                                        placeholder="Samples Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Specimens</legend>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label for="teleopSpecimensScored" class="floating-label mb-1">
+                                <span>Specimens Scored</span>
+                                <input
+                                        id="teleopSpecimensScored"
+                                        type="number"
+                                        placeholder="Specimens Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopSamplesDropped" class="floating-label mb-1">
+                                <span>Specimens Dropped</span>
+                                <input
+                                        id="teleopSpecimensDropped"
+                                        type="number"
+                                        placeholder="Specimens Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Notes</legend>
+                        <label for="teleopNotes" class="floating-label mb-1">
+                            <span>TeleOp Notes</span>
+                            <input
+                                    id="teleopNotes"
+                                    type="text"
+                                    placeholder="TeleOp Notes"
+                                    class="input input-md w-full"
+                            />
+                        </label>
+                    </fieldset>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="w-full btn btn-primary" onclick="switchToAutonomous()" type="button">Back</button>
+                        <button class="w-full btn btn-primary" onclick="switchToEndgame()" type="button">Next</button>
+                    </div>
+                </fieldset>
+
+                <fieldset id="endgame" class="hidden">
+                    <legend class="fieldset-legend">Endgame</legend>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Parking</legend>
+                        <label class="select w-full mb-1">
+                            <span class="label">Parking</span>
+                            <select>
+                                <option disabled selected>Park Location</option>
+                                <option>None</option>
+                                <option>Level 1 Ascent</option>
+                                <option>Level 2 Ascent</option>
+                                <option>Level 3 Ascent</option>
+                                <option>Observation Zone</option>
+                            </select>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Other</legend>
+                        <label class="label mb-1" for="wasBroken">
+                            <input type="checkbox" id="wasBroken" class="checkbox checkbox-lg" />
+                            Broke?
+                        </label>
+
+                        <label class="select w-full mb-1">
+                            <span class="label">Robot Design</span>
+                            <select>
+                                <option disabled selected>Robot Design</option>
+                                <option>Claw</option>
+                                <option>Active Intake</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+
+                        <label for="otherNotes" class="floating-label mb-1">
+                            <span>Notes</span>
+                            <input
+                                    id="otherNotes"
+                                    type="text"
+                                    placeholder="Notes"
+                                    class="input input-md w-full"
+                            />
+                        </label>
+                    </fieldset>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="w-full btn btn-primary" onclick="switchToTeleop()" type="button">Back</button>
+                        <button class="w-full btn btn-secondary" type="submit">Finish</button>
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
-
 </html>
