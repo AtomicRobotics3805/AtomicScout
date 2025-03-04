@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/output.css">
+  <meta name="description" content="">
+</head>
+
+<body>
+
+  <form id="scoring_form">
+    <fieldset id="info">
+      <legend>Basic Information</legend>
+
+
+      <label for="team_number" class="floating-label m-2">Team Number</label>
+      <input id="team_number" name="team_number" type="number" min="1" placeholder="Team Number" class="input" />
+      <input id="match_number" name="match_number" type="number" min="1" placeholder="Match Number" />
+      <br />
+      <label for="start_side">Starting Side:</label>
+      <select id="start_side" name="start_side" >
+        <option value="near">Near</option>
+        <option value="far">Far</option>
+      </select>
+      <br />
+      <br />
+      <button type="button" class="to_auto btn btn-primary">Continue</button>
+    </fieldset>
+    <fieldset id="autonomous" class="hidden fieldset">
+      <legend class="fieldset-legend">Autonomous</legend>
+
+      <button class="to_teleop btn btn-secondary" type="button">Switch to TeleOp</button>
+      <button class="to_endgame btn btn-secondary" type="button">Switch to Endgame</button>
+      <br /><br />
+    </fieldset>
+    <fieldset id="teleop" class="hidden fieldset">
+      <legend class="fieldset-legend">TeleOp</legend>
+
+      <button class="to_auto btn btn-secondary" type="button">Switch to Autonomous</button>
+      <button class="to_endgame btn btn-secondary" type="button">Switch to Endgame</button>
+      <br /><br />
+    </fieldset>
+    <fieldset id="endgame" class="hidden fieldset">
+      <legend class="fieldset-legend">Endgame</legend>
+
+      <button class="to_teleop btn btn-secondary" type="button">Switch to TeleOp</button>
+      <button class="to_auto btn btn-secondary" type="button">Switch to Autonomous</button>
+      <br /><br />
+    </fieldset>
+  </form>
+
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
