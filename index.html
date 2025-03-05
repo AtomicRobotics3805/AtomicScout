@@ -45,7 +45,7 @@
 
                     <label class="select w-full mb-4">
                         <span class="label">Starting Side</span>
-                        <select>
+                        <select id="startSide">
                             <option disabled selected>Match Start Side</option>
                             <option>Near</option>
                             <option>Far</option>
@@ -112,7 +112,7 @@
 
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Parking</legend>
-                        <label class="select w-full mb-1">
+                        <label class="select w-full mb-1" id="autoParkLocation">
                             <span class="label">Parking</span>
                             <select>
                                 <option disabled selected>Auto Park Location</option>
@@ -121,31 +121,6 @@
                                 <option>Observation Zone</option>
                             </select>
                         </label>
-                    </fieldset>
-
-                    <fieldset class="fieldset">
-                        <legend class="fieldset-legend">Penalties</legend>
-                        <div class="grid grid-cols-2 gap-2">
-                            <label for="autoMinorPenalties" class="floating-label mb-1">
-                                <span>Minor Penalties</span>
-                                <input
-                                        id="autoMinorPenalties"
-                                        type="number"
-                                        placeholder="Minor Penalties"
-                                        class="input input-md w-full"
-                                        min=0
-                                />
-                            </label> <label for="autoMajorPenalties" class="floating-label mb-1">
-                                <span>Major Penalties</span>
-                                <input
-                                        id="autoMajorPenalties"
-                                        type="number"
-                                        placeholder="Major Penalties"
-                                        class="input input-md w-full"
-                                        min=0
-                                />
-                            </label>
-                        </div>
                     </fieldset>
 
                     <fieldset class="fieldset">
@@ -223,31 +198,6 @@
                     </fieldset>
 
                     <fieldset class="fieldset">
-                        <legend class="fieldset-legend">Penalties</legend>
-                        <div class="grid grid-cols-2 gap-2">
-                            <label for="teleopMinorPenalties" class="floating-label mb-1">
-                                <span>Minor Penalties</span>
-                                <input
-                                        id="teleopMinorPenalties"
-                                        type="number"
-                                        placeholder="Minor Penalties"
-                                        class="input input-md w-full"
-                                        min=0
-                                />
-                            </label> <label for="teleopMajorPenalties" class="floating-label mb-1">
-                            <span>Major Penalties</span>
-                            <input
-                                    id="teleopMajorPenalties"
-                                    type="number"
-                                    placeholder="Major Penalties"
-                                    class="input input-md w-full"
-                                    min=0
-                            />
-                        </label>
-                        </div>
-                    </fieldset>
-
-                    <fieldset class="fieldset">
                         <legend class="fieldset-legend">Notes</legend>
                         <label for="teleopNotes" class="floating-label mb-1">
                             <span>TeleOp Notes</span>
@@ -271,7 +221,7 @@
 
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Parking</legend>
-                        <label class="select w-full mb-1">
+                        <label class="select w-full mb-1" id="endgameParkLocation">
                             <span class="label">Parking</span>
                             <select>
                                 <option disabled selected>Park Location</option>
@@ -287,25 +237,16 @@
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Penalties</legend>
                         <div class="grid grid-cols-2 gap-2">
-                            <label for="endgameMinorPenalties" class="floating-label mb-1">
+                            <label for="penaltyPoints" class="floating-label mb-1">
                                 <span>Minor Penalties</span>
                                 <input
-                                        id="endgameMinorPenalties"
+                                        id="penaltyPoints"
                                         type="number"
-                                        placeholder="Minor Penalties"
+                                        placeholder="Penalty Points"
                                         class="input input-md w-full"
                                         min=0
                                 />
-                            </label> <label for="endgameMajorPenalties" class="floating-label mb-1">
-                            <span>Major Penalties</span>
-                            <input
-                                    id="endgameMajorPenalties"
-                                    type="number"
-                                    placeholder="Major Penalties"
-                                    class="input input-md w-full"
-                                    min=0
-                            />
-                        </label>
+                            </label>
                         </div>
                     </fieldset>
 
@@ -316,7 +257,7 @@
                             Broke?
                         </label>
 
-                        <label class="select w-full mb-1">
+                        <label class="select w-full mb-1" id="robotDesign">
                             <span class="label">Robot Design</span>
                             <select>
                                 <option disabled selected>Robot Design</option>
@@ -339,7 +280,7 @@
 
                     <div class="grid grid-cols-2 gap-2">
                         <button class="w-full btn btn-primary" onclick="switchToTeleop()" type="button">Back</button>
-                        <button class="w-full btn btn-secondary" type="submit">Finish</button>
+                        <button class="w-full btn btn-primary" onclick="getFormValues()" type="button" id="submitButton">Finish</button>
                     </div>
                 </fieldset>
             </form>
