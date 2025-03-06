@@ -10,14 +10,14 @@
 <body>
     <div class="flex flex-col h-dvh" id="inputPage"> <!-- INPUT PAGE -->
         <div class="flex items-end justify-between border-b-2 border-b-white p-4 lg:mx-[25%]">
-            <div class="w-40"><!-- EMPTY TO MAKE JUSTIFY-BETWEEN WORK --></div>
-            <ul class="steps">
+            <div class="w-40 hidden lg:flex"><!-- EMPTY TO MAKE JUSTIFY-BETWEEN WORK --></div>
+            <ul class="steps w-[100%]">
                 <li id="step_info" class="step step-primary" onclick="switchToInfo()">Basic Info</li>
                 <li id="step_auto" class="step" onclick="switchToAutonomous()">Autonomous</li>
                 <li id="step_teleop" class="step" onclick="switchToTeleop()">TeleOp</li>
                 <li id="step_endgame" class="step" onclick="switchToEndgame()">Endgame</li>
             </ul>
-            <div class="flex flex-col items-center justify-center h-full w-40">
+            <div class="flex-col items-center justify-center h-full w-40 hidden lg:flex">
                 <button class="btn btn-primary align-middle" onclick="switchToOverview()">View Data</button>
             </div>
         </div>
