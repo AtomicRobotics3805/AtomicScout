@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <title>Atomic Scout</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/output.css">
@@ -24,7 +24,7 @@
 
         <main class="flex-1 flex items-center justify-center lg:items-start">
             <form id="inputForm">
-                <fieldset id="info" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4">
+                <fieldset id="info" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto w-[95vw] border p-4 lg:mt-10 lg:w-md">
                     <legend class="fieldset-legend">Basic Info</legend>
 
                     <label for="teamNum" class="floating-label mb-1">
@@ -59,7 +59,7 @@
                     <button class="btn btn-primary w-full" onclick="switchToAutonomous()" type="button">Next</button>
                 </fieldset>
 
-                <fieldset id="autonomous" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4 hidden">
+                <fieldset id="autonomous" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-[95vw] border p-4 hidden lg:w-md">
                     <legend class="fieldset-legend">Autonomous</legend>
 
                     <fieldset class="fieldset">
@@ -206,7 +206,7 @@
                     </div>
                 </fieldset>
 
-                <fieldset id="teleop" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4 hidden">
+                <fieldset id="teleop" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-[95vw] border p-4 lg:w-md hidden">
                     <legend class="fieldset-legend">TeleOp</legend>
 
                     <fieldset class="fieldset">
@@ -340,7 +340,7 @@
                     </div>
                 </fieldset>
 
-                <fieldset id="endgame" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4 hidden">
+                <fieldset id="endgame" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-[95vw] border p-4 lg:w-md hidden">
                     <legend class="fieldset-legend">Endgame</legend>
 
                     <fieldset class="fieldset">
