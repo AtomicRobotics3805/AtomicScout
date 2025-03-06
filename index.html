@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/output.css">
 </head>
 <body>
-    <div class="flex flex-col h-dvh"> <!-- INPUT PAGE -->
+    <div class="flex flex-col h-dvh" id="inputPage"> <!-- INPUT PAGE -->
         <div class="flex items-end justify-between border-b-2 border-b-white p-4 lg:mx-[25%]">
             <div class="w-40"><!-- EMPTY TO MAKE JUSTIFY-BETWEEN WORK --></div>
             <ul class="steps">
@@ -18,13 +18,13 @@
                 <li id="step_endgame" class="step" onclick="switchToEndgame()">Endgame</li>
             </ul>
             <div class="flex flex-col items-center justify-center h-full w-40">
-                <button class="btn btn-primary align-middle">View Data</button>
+                <button class="btn btn-primary align-middle" onclick="switchToOverview()">View Data</button>
             </div>
         </div>
 
         <main class="flex-1 flex items-center justify-center lg:items-start">
             <form id="inputForm">
-                <fieldset id="info" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4">
+                <fieldset id="info" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4">
                     <legend class="fieldset-legend">Basic Info</legend>
 
                     <label for="teamNum" class="floating-label mb-1">
@@ -59,28 +59,68 @@
                     <button class="btn btn-primary w-full" onclick="switchToAutonomous()" type="button">Next</button>
                 </fieldset>
 
-                <fieldset id="autonomous" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4 hidden">
+                <fieldset id="autonomous" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4 hidden">
                     <legend class="fieldset-legend">Autonomous</legend>
 
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Samples</legend>
                         <div class="grid grid-cols-2 gap-2">
-                            <label for="autoSamplesScored" class="floating-label mb-1">
-                                <span>Samples Scored</span>
+                            <label for="autoHighSamplesScored" class="floating-label mb-1">
+                                <span>High Samples Scored</span>
                                 <input
-                                        id="autoSamplesScored"
+                                        id="autoHighSamplesScored"
                                         type="number"
-                                        placeholder="Samples Scored"
+                                        placeholder="High Samples Scored"
                                         class="input input-md w-full"
                                         min=0
                                 />
                             </label>
-                            <label for="autoSamplesDropped" class="floating-label mb-1">
-                                <span>Samples Dropped</span>
+                            <label for="autoHighSamplesDropped" class="floating-label mb-1">
+                                <span>High Samples Dropped</span>
                                 <input
-                                        id="autoSamplesDropped"
+                                        id="autoHighSamplesDropped"
                                         type="number"
-                                        placeholder="Samples Dropped"
+                                        placeholder="High Samples Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoLowSamplesScored" class="floating-label mb-1">
+                                <span>Low Samples Scored</span>
+                                <input
+                                        id="autoLowSamplesScored"
+                                        type="number"
+                                        placeholder="Low Samples Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoLowSamplesDropped" class="floating-label mb-1">
+                                <span>Low Samples Dropped</span>
+                                <input
+                                        id="autoLowSamplesDropped"
+                                        type="number"
+                                        placeholder="Low Samples Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoNetSamplesScored" class="floating-label mb-1">
+                                <span>Net Samples Scored</span>
+                                <input
+                                        id="autoNetSamplesScored"
+                                        type="number"
+                                        placeholder="Net Samples Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoLowSamplesDropped" class="floating-label mb-1">
+                                <span>Net Samples Dropped</span>
+                                <input
+                                        id="autoNetSamplesDropped"
+                                        type="number"
+                                        placeholder="Net Samples Dropped"
                                         class="input input-md w-full"
                                         min=0
                                 />
@@ -91,22 +131,42 @@
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Specimens</legend>
                         <div class="grid grid-cols-2 gap-2">
-                            <label for="autoSpecimensScored" class="floating-label mb-1">
-                                <span>Specimens Scored</span>
+                            <label for="autoHighSpecimensScored" class="floating-label mb-1">
+                                <span>High Specimens Scored</span>
                                 <input
-                                        id="autoSpecimensScored"
+                                        id="autoHighSpecimensScored"
                                         type="number"
-                                        placeholder="Specimens Scored"
+                                        placeholder="High Specimens Scored"
                                         class="input input-md w-full"
                                         min=0
                                 />
                             </label>
-                            <label for="autoSpecimensDropped" class="floating-label mb-1">
-                                <span>Specimens Dropped</span>
+                            <label for="autoHighSpecimensDropped" class="floating-label mb-1">
+                                <span>High Specimens Dropped</span>
                                 <input
-                                        id="autoSpecimensDropped"
+                                        id="autoHighSpecimensDropped"
                                         type="number"
-                                        placeholder="Specimens Dropped"
+                                        placeholder="High Specimens Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoLowSpecimensScored" class="floating-label mb-1">
+                                <span>Low Specimens Scored</span>
+                                <input
+                                        id="autoLowSpecimensScored"
+                                        type="number"
+                                        placeholder="Low Specimens Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="autoLowSpecimensDropped" class="floating-label mb-1">
+                                <span>Low Specimens Dropped</span>
+                                <input
+                                        id="autoLowSpecimensDropped"
+                                        type="number"
+                                        placeholder="Low Specimens Dropped"
                                         class="input input-md w-full"
                                         min=0
                                 />
@@ -146,28 +206,68 @@
                     </div>
                 </fieldset>
 
-                <fieldset id="teleop" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4 hidden">
+                <fieldset id="teleop" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4 hidden">
                     <legend class="fieldset-legend">TeleOp</legend>
 
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Samples</legend>
                         <div class="grid grid-cols-2 gap-2">
-                            <label for="teleopSamplesScored" class="floating-label mb-1">
-                                <span>Samples Scored</span>
+                            <label for="teleopHighSamplesScored" class="floating-label mb-1">
+                                <span>High Samples Scored</span>
                                 <input
-                                        id="teleopSamplesScored"
+                                        id="teleopHighSamplesScored"
                                         type="number"
-                                        placeholder="Samples Scored"
+                                        placeholder="High Samples Scored"
                                         class="input input-md w-full"
                                         min=0
                                 />
                             </label>
-                            <label for="teleopSamplesDropped" class="floating-label mb-1">
-                                <span>Samples Dropped</span>
+                            <label for="teleopHighSamplesDropped" class="floating-label mb-1">
+                                <span>High Samples Dropped</span>
                                 <input
-                                        id="teleopSamplesDropped"
+                                        id="teleopHighSamplesDropped"
                                         type="number"
-                                        placeholder="Samples Dropped"
+                                        placeholder="High Samples Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopLowSamplesScored" class="floating-label mb-1">
+                                <span>Low Samples Scored</span>
+                                <input
+                                        id="teleopLowSamplesScored"
+                                        type="number"
+                                        placeholder="Low Samples Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopLowSamplesDropped" class="floating-label mb-1">
+                                <span>Low Samples Dropped</span>
+                                <input
+                                        id="teleopLowSamplesDropped"
+                                        type="number"
+                                        placeholder="Low Samples Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopNetSamplesScored" class="floating-label mb-1">
+                                <span>Net Samples Scored</span>
+                                <input
+                                        id="teleopNetSamplesScored"
+                                        type="number"
+                                        placeholder="Net Samples Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopLowSamplesDropped" class="floating-label mb-1">
+                                <span>Net Samples Dropped</span>
+                                <input
+                                        id="teleopNetSamplesDropped"
+                                        type="number"
+                                        placeholder="Net Samples Dropped"
                                         class="input input-md w-full"
                                         min=0
                                 />
@@ -178,22 +278,42 @@
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Specimens</legend>
                         <div class="grid grid-cols-2 gap-2">
-                            <label for="teleopSpecimensScored" class="floating-label mb-1">
-                                <span>Specimens Scored</span>
+                            <label for="teleopHighSpecimensScored" class="floating-label mb-1">
+                                <span>High Specimens Scored</span>
                                 <input
-                                        id="teleopSpecimensScored"
+                                        id="teleopHighSpecimensScored"
                                         type="number"
-                                        placeholder="Specimens Scored"
+                                        placeholder="High Specimens Scored"
                                         class="input input-md w-full"
                                         min=0
                                 />
                             </label>
-                            <label for="teleopSpecimensDropped" class="floating-label mb-1">
-                                <span>Specimens Dropped</span>
+                            <label for="teleopHighSpecimensDropped" class="floating-label mb-1">
+                                <span>High Specimens Dropped</span>
                                 <input
-                                        id="teleopSpecimensDropped"
+                                        id="teleopHighSpecimensDropped"
                                         type="number"
-                                        placeholder="Specimens Dropped"
+                                        placeholder="High Specimens Dropped"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopLowSpecimensScored" class="floating-label mb-1">
+                                <span>Low Specimens Scored</span>
+                                <input
+                                        id="teleopLowSpecimensScored"
+                                        type="number"
+                                        placeholder="Low Specimens Scored"
+                                        class="input input-md w-full"
+                                        min=0
+                                />
+                            </label>
+                            <label for="teleopLowSpecimensDropped" class="floating-label mb-1">
+                                <span>Low Specimens Dropped</span>
+                                <input
+                                        id="teleopLowSpecimensDropped"
+                                        type="number"
+                                        placeholder="Low Specimens Dropped"
                                         class="input input-md w-full"
                                         min=0
                                 />
@@ -220,7 +340,7 @@
                     </div>
                 </fieldset>
 
-                <fieldset id="endgame" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4 hidden">
+                <fieldset id="endgame" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-md border p-4 hidden">
                     <legend class="fieldset-legend">Endgame</legend>
 
                     <fieldset class="fieldset">
@@ -288,24 +408,32 @@
                     </div>
                 </fieldset>
             </form>
-
-
-
         </main>
     </div>
-    <div class="relative flex flex-col h-dvh hidden"> <!-- OVERVIEW PAGE -->
-        <div class="flex justify-between w-full p-2">
-            <button type="button" class="btn btn-primary btn-square">
+
+    <div class="relative flex flex-col h-dvh items-center content-stretch hidden" id="overviewPage"> <!-- OVERVIEW PAGE -->
+        <div class="grid grid-cols-3 w-[90%] p-2">
+            <button type="button" class="btn btn-primary btn-square align-middle" onclick="switchToInput()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                 </svg>
             </button>
-            <button type="button" class="btn btn-primary">
-                Import JSON
-            </button>
+            <h1 class="font-bold text-center text-[40px]">Data Overview</h1>
+            <div class="flex justify-end">
+                <input type="file" accept=".json" class="file-input" id="jsonInput" />
+                <div class="w-[5px]"></div>
+                <button type="button" class="btn btn-primary" id="jsonButton">
+                    Import JSON
+                </button>
+            </div>
         </div>
-        <div class="flex justify-center">
-            <table class="table w-[80%]">
+        <div class="flex justify-center overflow-x-auto rounded-box border-base-content/5 bg-base-100 w-[90%]">
+            <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                Tooltip content
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
+            <table class="table overflow-clip table-zebra">
                 <thead>
                     <tr>
                         <th>Team Number</th>
@@ -315,10 +443,29 @@
                         <th>Autonomous Score</th>
                         <th>TeleOp Score</th>
                         <th>Penalties</th>
+                        <th><span class="tooltip tooltip-bottom" data-tip="Total Score Minus Penalties">Corrected Score</span></th>
+                        <th><span class="tooltip tooltip-bottom" data-tip="Percentage of Successful Scoring Attempts">Reliability</span></th>
                     </tr>
                 </thead>
+                <tbody id="dataTable">
+
+                </tbody>
             </table>
         </div>
+    </div>
+
+    <div class="relative flex flex-col h-dvh items-center content-stretch hidden" id="detailsPage"> <!-- DETAILS PAGE -->
+        <div class="grid grid-cols-3 w-[90%] p-2">
+            <button type="button" class="btn btn-primary btn-square align-middle" onclick="switchToOverview()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+            </button>
+            <h1 class="font-bold text-center text-[40px]">Details</h1>
+        </div>
+    </div>
+    <div class="flex justify-center overflow-visible rounded-box border-base-content/5 bg-base-100 w-[90%]">
+
     </div>
     <script src="js/app.js"></script>
 </body>
