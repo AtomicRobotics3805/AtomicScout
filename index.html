@@ -8,18 +8,22 @@
     <link rel="stylesheet" href="css/output.css">
 </head>
 <body>
-    <div class="flex flex-col h-dvh">
-        <div class="flex items-end justify-center border-b-2 border-b-white p-4 md:mx-[25%]">
+    <div class="flex flex-col h-dvh"> <!-- INPUT PAGE -->
+        <div class="flex items-end justify-between border-b-2 border-b-white p-4 lg:mx-[25%]">
+            <div class="w-40"><!-- EMPTY TO MAKE JUSTIFY-BETWEEN WORK --></div>
             <ul class="steps">
                 <li id="step_info" class="step step-primary" onclick="switchToInfo()">Basic Info</li>
                 <li id="step_auto" class="step" onclick="switchToAutonomous()">Autonomous</li>
                 <li id="step_teleop" class="step" onclick="switchToTeleop()">TeleOp</li>
                 <li id="step_endgame" class="step" onclick="switchToEndgame()">Endgame</li>
             </ul>
+            <div class="flex flex-col items-center justify-center h-full w-40">
+                <button class="btn btn-primary align-middle">View Data</button>
+            </div>
         </div>
 
         <main class="flex-1 flex items-center justify-center lg:items-start">
-            <form>
+            <form id="inputForm">
                 <fieldset id="info" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4">
                     <legend class="fieldset-legend">Basic Info</legend>
 
@@ -55,7 +59,7 @@
                     <button class="btn btn-primary w-full" onclick="switchToAutonomous()" type="button">Next</button>
                 </fieldset>
 
-                <fieldset id="autonomous" class="hidden">
+                <fieldset id="autonomous" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4 hidden">
                     <legend class="fieldset-legend">Autonomous</legend>
 
                     <fieldset class="fieldset">
@@ -112,9 +116,9 @@
 
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Parking</legend>
-                        <label class="select w-full mb-1" id="autoParkLocation">
+                        <label class="select w-full mb-1">
                             <span class="label">Parking</span>
-                            <select>
+                            <select id="autoParkLocation">
                                 <option disabled selected>Auto Park Location</option>
                                 <option>None</option>
                                 <option>Level 1 Ascent</option>
@@ -142,7 +146,7 @@
                     </div>
                 </fieldset>
 
-                <fieldset id="teleop" class="hidden">
+                <fieldset id="teleop" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4 hidden">
                     <legend class="fieldset-legend">TeleOp</legend>
 
                     <fieldset class="fieldset">
@@ -216,14 +220,14 @@
                     </div>
                 </fieldset>
 
-                <fieldset id="endgame" class="hidden">
+                <fieldset id="endgame" class="fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4 hidden">
                     <legend class="fieldset-legend">Endgame</legend>
 
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Parking</legend>
-                        <label class="select w-full mb-1" id="endgameParkLocation">
+                        <label class="select w-full mb-1">
                             <span class="label">Parking</span>
-                            <select>
+                            <select id="endgameParkLocation">
                                 <option disabled selected>Park Location</option>
                                 <option>None</option>
                                 <option>Level 1 Ascent</option>
@@ -238,7 +242,7 @@
                         <legend class="fieldset-legend">Penalties</legend>
                         <div class="grid grid-cols-2 gap-2">
                             <label for="penaltyPoints" class="floating-label mb-1">
-                                <span>Minor Penalties</span>
+                                <span>Penalties</span>
                                 <input
                                         id="penaltyPoints"
                                         type="number"
@@ -257,9 +261,9 @@
                             Broke?
                         </label>
 
-                        <label class="select w-full mb-1" id="robotDesign">
+                        <label class="select w-full mb-1">
                             <span class="label">Robot Design</span>
-                            <select>
+                            <select id="robotDesign">
                                 <option disabled selected>Robot Design</option>
                                 <option>Claw</option>
                                 <option>Active Intake</option>
@@ -284,9 +288,38 @@
                     </div>
                 </fieldset>
             </form>
+
+
+
         </main>
     </div>
-
+    <div class="relative flex flex-col h-dvh hidden"> <!-- OVERVIEW PAGE -->
+        <div class="flex justify-between w-full p-2">
+            <button type="button" class="btn btn-primary btn-square">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+            </button>
+            <button type="button" class="btn btn-primary">
+                Import JSON
+            </button>
+        </div>
+        <div class="flex justify-center">
+            <table class="table w-[80%]">
+                <thead>
+                    <tr>
+                        <th>Team Number</th>
+                        <th>Match Number</th>
+                        <th>Starting Side</th>
+                        <th>Total Score</th>
+                        <th>Autonomous Score</th>
+                        <th>TeleOp Score</th>
+                        <th>Penalties</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
     <script src="js/app.js"></script>
 </body>
 </html>

@@ -9,10 +9,10 @@ const stepTeleop = document.getElementById("step_teleop");
 const stepEndgame = document.getElementById("step_endgame");
 
 function switchToInfo() {
-    infoFieldset.className = "fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4"
-    autoFieldset.className = "hidden";
-    teleopFieldset.className = "hidden";
-    endgameFieldset.className = "hidden";
+    infoFieldset.classList.remove("hidden");
+    autoFieldset.classList.add("hidden");
+    teleopFieldset.classList.add("hidden");
+    endgameFieldset.classList.add("hidden");
 
     // Update steps
     stepInfo.className = "step step-primary"
@@ -22,41 +22,41 @@ function switchToInfo() {
 }
 
 function switchToTeleop() {
-    infoFieldset.className = "hidden"
-    autoFieldset.className = "hidden";
-    teleopFieldset.className = "fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4";
-    endgameFieldset.className = "hidden";
+    infoFieldset.classList.add("hidden");
+    autoFieldset.classList.add("hidden");
+    teleopFieldset.classList.remove("hidden");
+    endgameFieldset.classList.add("hidden");
 
     // Update steps
-    stepInfo.className = "step"
-    stepAuto.className = "step"
+    stepInfo.className = "step step-primary"
+    stepAuto.className = "step step-primary"
     stepTeleop.className = "step step-primary"
     stepEndgame.className = "step"
 }
 
 function switchToAutonomous() {
-    infoFieldset.className = "hidden"
-    autoFieldset.className = "fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4";
-    teleopFieldset.className = "hidden";
-    endgameFieldset.className = "hidden";
+    infoFieldset.classList.add("hidden");
+    autoFieldset.classList.remove("hidden");
+    teleopFieldset.classList.add("hidden");
+    endgameFieldset.classList.add("hidden");
 
     // Update steps
-    stepInfo.className = "step"
+    stepInfo.className = "step step-primary"
     stepAuto.className = "step step-primary"
     stepTeleop.className = "step"
     stepEndgame.className = "step"
 }
 
 function switchToEndgame() {
-    infoFieldset.className = "hidden"
-    autoFieldset.className = "hidden";
-    teleopFieldset.className = "hidden";
-    endgameFieldset.className = "fieldset bg-base-200 border-base-300 rounded-box mx-auto mt-10 w-sm border p-4"
+    infoFieldset.classList.add("hidden");
+    autoFieldset.classList.add("hidden");
+    teleopFieldset.classList.add("hidden");
+    endgameFieldset.classList.remove("hidden");
 
     // Update steps
-    stepInfo.className = "step"
-    stepAuto.className = "step"
-    stepTeleop.className = "step"
+    stepInfo.className = "step step-primary"
+    stepAuto.className = "step step-primary"
+    stepTeleop.className = "step step-primary"
     stepEndgame.className = "step step-primary"
 }
 
@@ -140,7 +140,10 @@ function getFormValues() {
 
     let finalJson = JSON.parse(json);
     finalJson.push(newJson);
-    localStorage.setItem('json', JSON.stringify(finalJson));;
+    localStorage.setItem('json', JSON.stringify(finalJson));
+
+    document.getElementById("inputForm").reset();
+    switchToInfo();
 }
 
 function reset() {
