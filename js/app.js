@@ -340,6 +340,7 @@ function generateFromJson(object) {
     let reliability = (Number(object.autoHighSamplesScored) + Number(object.autoLowSamplesScored) + Number(object.autoNetSamplesScored) + Number(object.autoHighSpecimensScored) + Number(object.autoLowSpecimensScored) + Number(object.teleopHighSamplesScored) + Number(object.teleopLowSamplesScored) + Number(object.teleopNetSamplesScored) + Number(object.teleopHighSpecimensScored) + Number(object.teleopLowSpecimensScored))
     if (Number(object.autoHighSamplesDropped) + Number(object.autoLowSamplesDropped) + Number(object.autoNetSamplesDropped) + Number(object.autoHighSpecimensDropped) + Number(object.autoLowSpecimensDropped) + Number(object.teleopHighSamplesDropped) + Number(object.teleopLowSamplesDropped) + Number(object.teleopNetSamplesDropped) + Number(object.teleopHighSpecimensDropped) + Number(object.teleopLowSpecimensDropped) !== 0) {
         reliability /= Number(object.autoHighSamplesDropped) + Number(object.autoLowSamplesDropped) + Number(object.autoNetSamplesDropped) + Number(object.autoHighSpecimensDropped) + Number(object.autoLowSpecimensDropped) + Number(object.teleopHighSamplesDropped) + Number(object.teleopLowSamplesDropped) + Number(object.teleopNetSamplesDropped) + Number(object.teleopHighSpecimensDropped) + Number(object.teleopLowSpecimensDropped)
+        reliability = 1-1/reliability;
     } else {
         reliability = 1;
     }
@@ -353,6 +354,6 @@ function generateFromJson(object) {
         teleopScore,
         penalties: object.penaltyPoints,
         correctedScore: totalScore - object.penaltyPoints,
-        reliability: (reliability*100).toString() + "%",
+        reliability: (reliability*100).toFixed(2) + "%",
     }
 }
