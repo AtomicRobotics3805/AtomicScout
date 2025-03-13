@@ -213,9 +213,9 @@ function createTable() {
 
 
 document.getElementById("dataTable").addEventListener("click", function(e) {
-    console.log(e.target.parentNode.querySelectorAll(".teamNumber")[0].innerText);
-    console.log(e.target.parentNode.querySelectorAll(".matchNumber")[0].innerText);
+    populateDetails(e.target.parentNode.querySelectorAll(".teamNumber")[0].innerText, e.target.parentNode.querySelectorAll(".matchNumber")[0].innerText);
     console.log(findItem(e.target.parentNode.querySelectorAll(".teamNumber")[0].innerText, e.target.parentNode.querySelectorAll(".matchNumber")[0].innerText));
+    switchToDetails();
 })
 
 // VALIDATE UPLOADED FILES

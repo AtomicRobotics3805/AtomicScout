@@ -420,12 +420,16 @@
                 </svg>
             </button>
             <h1 class="font-bold text-center text-[40px]">Data Overview</h1>
-            <div class="flex justify-end">
+            <div class="justify-end hidden lg:flex">
                 <input type="file" accept=".json" class="file-input" id="jsonInput" />
                 <div class="w-[5px]"></div>
                 <button type="button" class="btn btn-primary" id="jsonButton">
                     Import JSON
                 </button>
+                <div class="w-[10px]"></div>
+                <a id="jsonButtonExport" href="#" class="btn btn-primary" download>
+                    Download JSON
+                </a>
             </div>
         </div>
         <div class="flex justify-center overflow-x-auto rounded-box border-base-content/5 bg-base-100 w-[90%]">
@@ -462,12 +466,60 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                 </svg>
             </button>
-            <h1 class="font-bold text-center text-[40px]">Details</h1>
+            <h1 class="font-bold text-center text-[40px]">Team & Match Details</h1>
+        </div>
+        <div class="grid grid-cols-1 justify-center overflow-visible relative rounded-box border-base-content/5 bg-base-100 w-[90%]">
+            <div class="grid grid-cols-3 w-full p-2">
+                <h1 class="text-[25px] text-center">Match #<span id="detailsMatchNum"></span></h1>
+                <h1 class="text-[25px] text-center">Team # <span id="detailsTeamNum"></span></h1>
+                <h1 class="text-[25px] text-center">Starting Location: <span id="detailsStartingPos"></span></h1>
+            </div>
+            <hr />
+            <h1 class="text-[30px] text-center mt-4 font-bold">Autonomous</h1>
+            <div class="grid grid-cols-3 p-2 justify-center mt-4"> <!-- Autonomous Samples -->
+                <h1 class="text-[20px] font-light">High Samples (Scored/Dropped): <span id="detailsAutoHighSamples"></span></h1>
+                <h1 class="text-[20px] font-light">Low Samples (Scored/Dropped): <span id="detailsAutoLowSamples"></span></h1>
+                <h1 class="text-[20px] font-light">Net Samples (Scored/Dropped): <span id="detailsAutoNetSamples"></span></h1>
+            </div>
+            <div class="grid grid-cols-3 p-2 justify-center mt-4"> <!-- Autonomous Specimens -->
+                <h1 class="text-[20px] font-light">High Specimens (Scored/Dropped): <span id="detailsAutoHighSpecimens"></span></h1>
+                <h1 class="text-[20px] font-light">Low Specimens (Scored/Dropped): <span id="detailsAutoLowSpecimens"></span></h1>
+            </div>
+            <div class="grid grid-cols-3 p-2 justify-center mt-4">
+                <h1 class="text-[20px] font-light">Park: <span id="detailsAutoPark"></span></h1>
+                <h1 class="text-[20px] font-light w-[200%]">Auto Notes: <span id="detailsAutoNotes"></span></h1>
+            </div>
+            <hr class="mt-4"/>
+            <h1 class="text-[30px] text-center mt-4 font-bold">TeleOp</h1>
+            <div class="grid grid-cols-3 p-2 justify-center mt-4"> <!-- Autonomous Samples -->
+                <h1 class="text-[20px] font-light">High Samples (Scored/Dropped): <span id="detailsTeleOpHighSamples"></span></h1>
+                <h1 class="text-[20px] font-light">Low Samples (Scored/Dropped): <span id="detailsTeleOpLowSamples"></span></h1>
+                <h1 class="text-[20px] font-light">Net Samples (Scored/Dropped): <span id="detailsTeleOpNetSamples"></span></h1>
+            </div>
+            <div class="grid grid-cols-3 p-2 justify-center mt-4"> <!-- Autonomous Specimens -->
+                <h1 class="text-[20px] font-light">High Specimens (Scored/Dropped): <span id="detailsTeleOpHighSpecimens"></span></h1>
+                <h1 class="text-[20px] font-light">Low Specimens (Scored/Dropped): <span id="detailsTeleOpLowSpecimens"></span></h1>
+            </div>
+            <div class="grid grid-cols-1 p-2 justify-center mt-4">
+                <h1 class="text-[20px] font-light">TeleOp Notes: <span id="detailsTeleOpNotes"></span></h1>
+            </div>
+
+            <hr class="mt-4"/>
+            <h1 class="text-[30px] text-center mt-4 font-bold">Endgame</h1>
+            <div class="grid grid-cols-4 p-2 justify-center mt-4">
+                <h1 class="text-[20px] font-light">Park: <span id="detailsTeleOpPark"></span></h1>
+                <h1 class="text-[20px] font-light">Robot Design: <span id="detailsRobotDesign"></span></h1>
+                <h1 class="text-[20px] font-light">Broke? <span id="detailsBroke"></span></h1>
+                <h1 class="text-[20px] font-light">Penalty Points: <span id="detailsPenalties"></span></h1>
+            </div>
+            <div class="grid grid-cols-2 p-2 justify-center mt-4">
+                <h1 class="text-[20px] font-light">Notes: <span id="detailsNotes"></span></h1>
+            </div>
         </div>
     </div>
-    <div class="flex justify-center overflow-visible rounded-box border-base-content/5 bg-base-100 w-[90%]">
 
-    </div>
     <script src="js/app.js"></script>
+    <script src="js/details.js"></script>
+    <script src="js/file.js"></script>
 </body>
 </html>
